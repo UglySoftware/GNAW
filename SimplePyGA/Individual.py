@@ -5,23 +5,26 @@ import random
 # SimplePyGA imports
 import Gene
 
+# Constants
+NUM_GENES_DEFAULT = 10
+CROSSOVER_RATE_DEFAULT = 0.5
+
 # Individual base class
 class Individual(object):
     """Individual member of the GA population"""
 
-    crossoverRate = 0.5
-
-    def __init__(self, numGenes, geneValues = None):
+    def __init__(self, numGenes = NUM_GENES_DEFAULT, geneValues = None, crossoverRate = CROSSOVER_RATE_DEFAULT):
+        self.crossoverRate = crossoverRate
         if geneValues is None:
             self.genes = [Gene.Gene() for i in range(numGenes)]
         else:
             self.genes = [Gene.Gene(v) for v in geneValues]
 
-    def getGene(self, index):
-        return self.genes[index]
+    def getGene(self, keyOrIndex):
+        return self.genes[keyOrIndex]
 
-    def setGene(self, index, gene):
-        self.genes[index] = gene
+    def setGene(self, keyOrIndex, gene):
+        self.genes[keyOrIndex] = gene
 
     def numGenes(self):
         return len(self.genes)
@@ -31,15 +34,13 @@ class Individual(object):
             g.mutate()
 
     def toString(self):
-        return " ".join([str(_.getValue()) for _ in self.genes])
+        return " ".join([str(g.getValue()) for g in self.genes])
 
 def breed(parent1, parent2):
-    child = Individual(parent1.numGenes())
-    for i in range(parent1.numGenes()):
-        if random.random() <= Individual.crossoverRate:
-            child.setGene(i, copy.deepcopy(parent1.getGene(i)))
-        else:
-            child.setGene(i, copy.deepcopy(parent2.getGene(i)))
+    child = copy.deepcopy(parent1)
+    for (cg, pg2) in zip(child.genes, parent2.genes):
+        if random.random() <= child.crossoverRate:
+            cg = copy.deepcopy(pg2)
     return child
 
 if __name__ == "__main__":
@@ -56,3 +57,5 @@ if __name__ == "__main__":
     print "i2 All genes, initial values:", i2.toString(), "numGenes = ", i2.numGenes()
     i3 = breed(i1, i2)
     print "i3 All genes, initial values:", i3.toString()
+    I4 = Individual()
+    print "i4, all defaults, initial values:", I4.toString()
