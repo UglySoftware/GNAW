@@ -14,8 +14,8 @@ def printPopulation(pop, generation, goal):
 
 # main program
 if __name__ == "__main__":
-    goal = Individual.Individual(Environment.numGenesPerIndividual, Environment.goalIndividualGenes);
-    pop = Population.Population(Environment.populationSize, Environment.numGenesPerIndividual)
+    goal = Environment.IndividualClass(Environment.numGenesPerIndividual, Environment.goalIndividualGenes);
+    pop = Environment.PopulationClass(Environment.populationSize, Environment.IndividualClass)
     generation = 0;
     printPopulation(pop, generation, goal)
     #s = raw_input("Press any key...")

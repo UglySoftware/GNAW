@@ -6,14 +6,17 @@ import random
 import Gene
 import Individual
 
+# Constants
+POPULATION_SIZE_DEFAULT = 20
+
 # Population base class
 class Population(object):
     """The population of individuals to evolve using GA"""
 
     breedingPoolSize = 3
 
-    def __init__(self, popSize, numGenes):
-        self.individuals = [Individual.Individual(numGenes) for _ in range(popSize)]
+    def __init__(self, popSize = POPULATION_SIZE_DEFAULT, IndividualClass = Individual.Individual):
+        self.individuals = [IndividualClass() for i in range(popSize)]
 
     def size(self):
         return len(self.individuals)
@@ -38,7 +41,7 @@ class Population(object):
             print i.toString(), ":", getFitness(i, goal)
 
 def getFitness(indiv, goal):
-    fitnessDelta = [i.valueDiff(g) for i, g in zip(indiv.genes, goal.genes)]
+    fitnessDelta = [i.valueDiff(g) for (i, g) in zip(indiv.genes, goal.genes)]
     return 1.0 / (sum(fitnessDelta) + 1.0)
 
 def getFittest(individuals, goal):
