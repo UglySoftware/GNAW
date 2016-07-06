@@ -25,8 +25,11 @@ class Gene(object):
     def randomValue(self):
         return random.randint(Gene.minValue, Gene.maxValue)
 
-    def valueDiff(self, other):
+    def absDiff(self, other):
         return math.fabs(self.getValue() - other.getValue())
+
+    def pctDiff(self, other):
+        return self.absDiff(other) / (self.maxValue - self.minValue + 1)
 
     def mutate(self):
         if random.random() <= Gene.mutationRate:
@@ -44,3 +47,5 @@ if __name__ == "__main__":
     print "Gene value after mutation:", g1.getValue()
     g1.setValue(99)
     print "Gene new value:", g1.getValue()
+    print g1.minValue
+    print g1.maxValue

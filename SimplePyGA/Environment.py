@@ -4,8 +4,16 @@
 # none
 
 # SimplePyGA imports
+import Gene
 import Individual
 import Population
+import FitnessCalc
+
+# GA control settings
+promptBetweenGenerations = False
+printAllIndividuals = False
+printFittestIndividual = True
+maxGenerations = -1
 
 # Individual settings
 IndividualClass = Individual.Individual
@@ -15,3 +23,6 @@ goalIndividualGenes = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
 # Population settings
 PopulationClass = Population.Population
 populationSize = 20
+
+# FitnessCalc settings
+FitnessCalcClass = FitnessCalc.FCAvgPctDiff

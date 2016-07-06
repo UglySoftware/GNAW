@@ -5,6 +5,7 @@ import random
 # SimplePyGA imports
 import Gene
 import Individual
+import FitnessCalc
 
 # Constants
 POPULATION_SIZE_DEFAULT = 20
@@ -15,8 +16,13 @@ class Population(object):
 
     breedingPoolSize = 3
 
-    def __init__(self, popSize = POPULATION_SIZE_DEFAULT, IndividualClass = Individual.Individual):
-        self.individuals = [IndividualClass() for i in range(popSize)]
+    def __init__(   self,
+                    popSize = POPULATION_SIZE_DEFAULT,
+                    IndividualClass = Individual.Individual,
+                    fitnessCalc = FitnessCalc.FitnessCalc()):
+        self.IndividualClass = IndividualClass
+        self.fitnessCalc = fitnessCalc
+        self.individuals = [self.IndividualClass() for i in range(popSize)]
 
     def size(self):
         return len(self.individuals)
@@ -26,30 +32,16 @@ class Population(object):
             i.mutate()
 
     def selectForBreeding(self):
-        selectedIndices = [random.randrange(0, self.size() - 1) for i in range(Population.breedingPoolSize)]
+        selectedIndices = [random.randrange(0, self.size() - 1) for i in range(self.breedingPoolSize)]
         return [self.individuals[i] for i in selectedIndices]
 
     def evolve(self, goal):
         for i in range(self.size()):
-            parent1 = getFittest(self.selectForBreeding(), goal)
-            parent2 = getFittest(self.selectForBreeding(), goal)
+            parent1 = FitnessCalc.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
+            parent2 = FitnessCalc.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
             self.individuals[i] = Individual.breed(parent1, parent2)
         self.mutate()
 
     def printPop(self, goal):
         for i in self.individuals:
-            print i.toString(), ":", getFitness(i, goal)
-
-def getFitness(indiv, goal):
-    fitnessDelta = [i.valueDiff(g) for (i, g) in zip(indiv.genes, goal.genes)]
-    return 1.0 / (sum(fitnessDelta) + 1.0)
-
-def getFittest(individuals, goal):
-    fittestIndividual = None
-    fittestScore = 0
-    for i in individuals:
-        curFitnessScore = getFitness(i, goal)
-        if curFitnessScore > fittestScore:
-            fittestIndividual = i
-            fittestScore = curFitnessScore
-    return fittestIndividual
+            print i.toString(), ":", self.fitnessCalc.getFitness(i, goal)
