@@ -10,7 +10,10 @@ class Gene(object):
     maxValue = 100
     mutationRate = 0.02
 
-    def __init__(self, value = None):
+    def __init__(self, name = "", value = None, minValue = None, maxValue = None):
+        self.name = name
+        if minValue is not None: self.minValue = minValue
+        if maxValue is not None: self.maxValue = maxValue
         if value is None:
             self.value = self.randomValue()
         else:
@@ -19,11 +22,13 @@ class Gene(object):
     def getValue(self):
         return self.value
 
+    # set gene value
+    # TODO: check if new value is within bounds; if not raise range error exception
     def setValue(self, value):
         self.value = value
 
     def randomValue(self):
-        return random.randint(Gene.minValue, Gene.maxValue)
+        return random.randint(self.minValue, self.maxValue)
 
     def absDiff(self, other):
         return math.fabs(self.getValue() - other.getValue())
@@ -35,17 +40,25 @@ class Gene(object):
         if random.random() <= Gene.mutationRate:
             self.value = self.randomValue()
 
-# NumericGene is really just the same as the base class Gene
-class NumericGene(Gene):
-    """A gene that holds a numeric value"""
-
 if __name__ == "__main__":
-    g1 = Gene(10)
+    g1 = Gene("g1", 10)
     print "Gene initial value:", g1.getValue()
     Gene.mutationRate = 1.0
     g1.mutate()
     print "Gene value after mutation:", g1.getValue()
     g1.setValue(99)
     print "Gene new value:", g1.getValue()
-    print g1.minValue
-    print g1.maxValue
+    print "g1.minValue", g1.minValue
+    print "g1.maxValue", g1.maxValue
+    g2 = Gene("g2", 20)
+    print "g2.minValue", g2.minValue
+    print "g2.maxValue", g2.maxValue
+    g2.minValue = 3
+    g2.maxValue = 77
+    print "g2.minValue", g2.minValue
+    print "g2.maxValue", g2.maxValue
+    print "g1.minValue", g1.minValue
+    print "g1.maxValue", g1.maxValue
+    g3 = Gene()
+    print "g3.minValue", g3.minValue
+    print "g3.maxValue", g3.maxValue
