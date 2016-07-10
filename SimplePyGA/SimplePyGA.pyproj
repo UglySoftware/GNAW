@@ -22,7 +22,25 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Environment.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FitnessCalc.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Gene.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Individual.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Population.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SimplePyGA.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Notes.txt" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
