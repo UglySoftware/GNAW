@@ -44,4 +44,4 @@ class Population(object):
 
     def printPop(self, goal):
         for i in self.individuals:
-            print i.toString(), ":", self.fitnessCalc.getFitness(i, goal)
+            print(i.toString(), ":", self.fitnessCalc.getFitness(i, goal))

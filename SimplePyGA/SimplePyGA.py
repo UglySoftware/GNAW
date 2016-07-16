@@ -1,3 +1,7 @@
+# Python library imports
+#none
+
+# SimplePyGA imports
 import Environment
 import FitnessCalc
 import Gene
@@ -6,14 +10,14 @@ import Individual
 import Population
 
 def printPopulation(pop, generation, goal):
-    print "========================================"
-    print "GENERATION: ", generation
-    print "========================================"
+    print("========================================")
+    print("GENERATION: ", generation)
+    print("========================================")
     pop.printPop(goal)
-    print "========================================"
+    print("========================================")
 
 def printFittest(generation, fittestIndividual, fittestScore):
-    print "Generation", generation, "Fittest Individual:", fittestIndividual.toString(), "Score:", fittestScore
+    print("Generation", generation, "Fittest Individual:", fittestIndividual.toString(), "Score:", fittestScore)
 
 # main program
 if __name__ == "__main__":
@@ -35,6 +39,6 @@ if __name__ == "__main__":
             generation = generation + 1
         else:
             break
-    print "DONE!"
-    print "Number of generations:", generation
+    print("DONE!")
+    print("Number of generations:", generation)
     printFittest(generation, fittestIndividual, fittestScore)

@@ -2,7 +2,7 @@
 This project demonstrates a simple Genetic Algorithm (GA) in Python.
 
 #System Requirements
-This project was built with Python 2.7 on Windows 10.  It should work with Python 2.7.x on any platform but this has not been tested.  It also has not been tested with Python 3.
+This project was built with Python 3.5.2 64-bit and Anaconda 4.1.1 on Windows 10.  It does not yet use any Anaconda-specific features and should work with Python 3.4.x on any platform but this has not been tested.  It will not work with Python 2.
 
 A Visual Studio 2015 solution and project file are included for those who like to edit using Visual Studio.
 
@@ -22,13 +22,14 @@ For a given GA application:
 
 ##Implementation
 In SimplePyGA, there are Python classes for:
-* Individual (a single "creature")
-* Population (a collection of individuals)
-* Environment (the world that a Population evolves in)
-* Goal (the desired end state for an Individual)
+* Gene (a named attribute with a numeric value and allowed range)
+* Individual (a single "creature" with one or more Genes)
+* Population (a collection of Individuals)
+* Environment (the world that a Population evolves in; settings for each GA run)
 * FitnessCalc (a set of methods for determining an Individual's fitness with respect to a Goal)
+Then there is a main script, SimplyPyGA.py, that runs the whole GA.
 
 #Credits
-The original version of this code was based on the article [Creating a genetic algorithm for beginners](http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3) by Lee Jaconson at The Project Spot.
+The original version of this code, back when it was all in one script file, was based on the article [Creating a genetic algorithm for beginners](http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3) by Lee Jaconson at The Project Spot.
 
 Improvements to the selection algorithm for cross-breeding came from the article [Genetic Algorithm for Solving Simple Mathematical Equality Problem](https://arxiv.org/ftp/arxiv/papers/1308/1308.4675.pdf) by Denny Hermawanto.

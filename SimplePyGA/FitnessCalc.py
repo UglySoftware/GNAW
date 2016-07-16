@@ -26,7 +26,7 @@ class FCInverseDiff(FitnessCalc):
             fitnessDelta = [i.absDiff(g) for (i, g) in zip(indiv.genes, goal.genes)]
             return 1.0 / (sum(fitnessDelta) + 1.0)
         except Exception as e:
-            print "FCInverseDiff.getFitness() EXCEPTION:", e
+            print("FCInverseDiff.getFitness() EXCEPTION:", e);
             return 0.0
 
 class FCAvgPctDiff(FitnessCalc):
@@ -39,7 +39,7 @@ class FCAvgPctDiff(FitnessCalc):
             fitnessDelta = [i.pctDiff(g) for (i, g) in zip(indiv.genes, goal.genes)]
             return 1.0 - (sum(fitnessDelta) / indiv.numGenes())
         except Exception as e:
-            print "FCAvgPctDiff.getFitness() EXCEPTION:", e
+            print("FCAvgPctDiff.getFitness() EXCEPTION:", e);
             return 0.0
 
 class FCGoesTo11(FitnessCalc):
@@ -53,7 +53,7 @@ class FCGoesTo11(FitnessCalc):
             fitnessDelta = math.fabs((geneValueAvg - 11.0) / 137.0)
             return 1.0 - fitnessDelta
         except Exception as e:
-            print "FCGoesTo11.getFitness() EXCEPTION:", e
+            print("FCGoesTo11.getFitness() EXCEPTION:", e);
             return 0.0
 
 def getFittest(individuals, goal, fitnessCalc):
