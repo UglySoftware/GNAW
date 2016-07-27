@@ -5,7 +5,8 @@ import random
 # SimplePyGA imports
 import Gene
 import Individual
-import FitnessCalc
+import FitnessCalc.FitnessCalc as FC
+import FitnessCalc.FitnessCalcBase as FCBase
 
 # Constants
 POPULATION_SIZE_DEFAULT = 20
@@ -19,7 +20,7 @@ class Population(object):
     def __init__(   self,
                     popSize = POPULATION_SIZE_DEFAULT,
                     IndividualClass = Individual.Individual,
-                    fitnessCalc = FitnessCalc.FitnessCalc()):
+                    fitnessCalc = FCBase.FitnessCalcBase()):
         self.IndividualClass = IndividualClass
         self.fitnessCalc = fitnessCalc
         self.individuals = [self.IndividualClass() for i in range(popSize)]
@@ -37,8 +38,8 @@ class Population(object):
 
     def evolve(self, goal):
         for i in range(self.size()):
-            parent1 = FitnessCalc.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
-            parent2 = FitnessCalc.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
+            parent1 = FC.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
+            parent2 = FC.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
             self.individuals[i] = Individual.breed(parent1, parent2)
         self.mutate()
 

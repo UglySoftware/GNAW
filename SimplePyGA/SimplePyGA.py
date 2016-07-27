@@ -28,7 +28,7 @@ if __name__ == "__main__":
     while True:
         if Environment.printAllIndividuals:
             printPopulation(pop, generation, goal)
-        fittestIndividual = FitnessCalc.getFittest(pop.individuals, goal, fitnessCalc)
+        fittestIndividual = FitnessCalc.FitnessCalc.getFittest(pop.individuals, goal, fitnessCalc)
         fittestScore = fitnessCalc.getFitness(fittestIndividual, goal)
         if Environment.printFittestIndividual:
             printFittest(generation, fittestIndividual, fittestScore)
