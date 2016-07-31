@@ -1,7 +1,23 @@
+#-----------------------------------------------------------------------
+#
+# Environment.py
+#
+#   Settings that define the environment for a Genetic Algorithm (GA)
+#   experiment to run in the SimplePyGA framework
+#
+# Copyright and Distribution
+#
+#   Part of SimplePyGA: Simple Genetic Algorithms in Python
+#   Copyright (c) 2016 Terry McKiernan (terry@mckiernan.com)
+#   Released under The MIT License
+#   See LICENSE file in top-level package folder
+#
+#-----------------------------------------------------------------------
+
 # The Environment is a set of constants that affect the GA and population
 
 # Python library imports
-# none
+#none
 
 # SimplePyGA imports
 import Gene

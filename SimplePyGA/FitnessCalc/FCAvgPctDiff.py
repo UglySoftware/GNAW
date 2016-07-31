@@ -1,3 +1,23 @@
+#-----------------------------------------------------------------------
+#
+# FCAvgPctDiff.py
+#
+#   Fitness calculation using the average percentage difference across
+#   all genes, comparing an individual to a goal set of genes
+#
+# Copyright and Distribution
+#
+#   Part of SimplePyGA: Simple Genetic Algorithms in Python
+#   Copyright (c) 2016 Terry McKiernan (terry@mckiernan.com)
+#   Released under The MIT License
+#   See LICENSE file in top-level package folder
+#
+#-----------------------------------------------------------------------
+
+# Python library imports
+#none
+
+# SimplePyGA imports
 from . import FitnessCalcBase
 
 class FCAvgPctDiff(FitnessCalcBase.FitnessCalcBase):

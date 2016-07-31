@@ -1,6 +1,24 @@
+#-----------------------------------------------------------------------
+#
+# Gene.py
+#
+#   Gene class for SimplePyGA
+#
+# Copyright and Distribution
+#
+#   Part of SimplePyGA: Simple Genetic Algorithms in Python
+#   Copyright (c) 2016 Terry McKiernan (terry@mckiernan.com)
+#   Released under The MIT License
+#   See LICENSE file in top-level package folder
+#
+#-----------------------------------------------------------------------
+
 # Python library imports
 import math
 import random
+
+# SimplePyGA imports
+#none
 
 # Gene base class
 class Gene(object):
@@ -15,7 +33,7 @@ class Gene(object):
         if minValue is not None: self.minValue = minValue
         if maxValue is not None: self.maxValue = maxValue
         if value is None:
-            self.value = self.randomValue()
+            self.value = self.__randomValue()
         else:
             self.value = value
 
@@ -27,7 +45,7 @@ class Gene(object):
     def setValue(self, value):
         self.value = value
 
-    def randomValue(self):
+    def __randomValue(self):
         return random.randint(self.minValue, self.maxValue)
 
     def absDiff(self, other):
@@ -38,7 +56,7 @@ class Gene(object):
 
     def mutate(self):
         if random.random() <= Gene.mutationRate:
-            self.value = self.randomValue()
+            self.value = self.__randomValue()
 
 if __name__ == "__main__":
     g1 = Gene("g1", 10)

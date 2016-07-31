@@ -1,3 +1,18 @@
+#-----------------------------------------------------------------------
+#
+# Population.py
+#
+#   Population class for SimplePyGA
+#
+# Copyright and Distribution
+#
+#   Part of SimplePyGA: Simple Genetic Algorithms in Python
+#   Copyright (c) 2016 Terry McKiernan (terry@mckiernan.com)
+#   Released under The MIT License
+#   See LICENSE file in top-level package folder
+#
+#-----------------------------------------------------------------------
+
 # Python library imports
 import copy
 import random

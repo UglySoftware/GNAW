@@ -1,3 +1,21 @@
+#-----------------------------------------------------------------------
+#
+# SimplePyGA.py
+#
+#   Main program for SimplePyGA
+#
+#   Executes a Genetic Algorithm (GA) for a population, using parameters
+#   specified in Environment.py
+#
+# Copyright and Distribution
+#
+#   Part of SimplePyGA: Simple Genetic Algorithms in Python
+#   Copyright (c) 2016 Terry McKiernan (terry@mckiernan.com)
+#   Released under The MIT License
+#   See LICENSE file in top-level package folder
+#
+#-----------------------------------------------------------------------
+
 # Python library imports
 #none
 
@@ -5,7 +23,6 @@
 import Environment
 import FitnessCalc
 import Gene
-#import Goal
 import Individual
 import Population
 

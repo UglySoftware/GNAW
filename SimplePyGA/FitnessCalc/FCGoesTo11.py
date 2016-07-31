@@ -1,5 +1,23 @@
+#-----------------------------------------------------------------------
+#
+# FCGoesTo11.py
+#
+#   Fitness calculation checking how close the average of all gene values
+#   is to 11.0.  In this case the set of goal genes is not used.
+#
+# Copyright and Distribution
+#
+#   Part of SimplePyGA: Simple Genetic Algorithms in Python
+#   Copyright (c) 2016 Terry McKiernan (terry@mckiernan.com)
+#   Released under The MIT License
+#   See LICENSE file in top-level package folder
+#
+#-----------------------------------------------------------------------
+
+# Python library imports
 import math
 
+# SimplePyGA imports
 from . import FitnessCalcBase
 
 class FCGoesTo11(FitnessCalcBase.FitnessCalcBase):
