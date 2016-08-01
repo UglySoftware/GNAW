@@ -37,19 +37,22 @@ class Gene(object):
         else:
             self.value = value
 
-    def getValue(self):
-        return self.value
+    @property
+    def value(self):
+        return self._value
 
-    # set gene value
-    # TODO: check if new value is within bounds; if not raise range error exception
-    def setValue(self, value):
-        self.value = value
+    @value.setter
+    def value(self, newValue):
+        if (newValue >= self.minValue) and (newValue <= self.maxValue):
+            self._value = newValue
+        else:
+            raise ValueError('SimplePyGA.Gene.Gene EXCEPTION: Gene value out of bounds (value {0}, min {1}, max {2})'.format(newValue, self.minValue, self.maxValue))
 
     def __randomValue(self):
         return random.randint(self.minValue, self.maxValue)
 
     def absDiff(self, other):
-        return math.fabs(self.getValue() - other.getValue())
+        return math.fabs(self.value - other.value)
 
     def pctDiff(self, other):
         return self.absDiff(other) / (self.maxValue - self.minValue + 1)
@@ -60,12 +63,12 @@ class Gene(object):
 
 if __name__ == "__main__":
     g1 = Gene("g1", 10)
-    print("Gene initial value:", g1.getValue())
+    print("Gene initial value:", g1.value)
     Gene.mutationRate = 1.0
     g1.mutate()
-    print("Gene value after mutation:", g1.getValue())
-    g1.setValue(99)
-    print("Gene new value:", g1.getValue())
+    print("Gene value after mutation:", g1.value)
+    g1.value = 99
+    print("Gene new value:", g1.value)
     print("g1.minValue", g1.minValue)
     print("g1.maxValue", g1.maxValue)
     g2 = Gene("g2", 20)
@@ -80,3 +83,8 @@ if __name__ == "__main__":
     g3 = Gene()
     print("g3.minValue", g3.minValue)
     print("g3.maxValue", g3.maxValue)
+    try:
+        g4 = Gene()
+        g4.value = 5500
+    except Exception as e:
+        print(e)

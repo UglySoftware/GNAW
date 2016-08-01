@@ -25,6 +25,8 @@ import FitnessCalc.FitnessCalcBase as FCBase
 
 # Constants
 POPULATION_SIZE_DEFAULT = 20
+INDIVIDUAL_CLASS_DEFAULT = Individual.Individual
+FITNESS_CALC_DEFAULT = FCBase.FitnessCalcBase()
 
 # Population base class
 class Population(object):
@@ -34,8 +36,8 @@ class Population(object):
 
     def __init__(   self,
                     popSize = POPULATION_SIZE_DEFAULT,
-                    IndividualClass = Individual.Individual,
-                    fitnessCalc = FCBase.FitnessCalcBase()):
+                    IndividualClass = INDIVIDUAL_CLASS_DEFAULT,
+                    fitnessCalc = FITNESS_CALC_DEFAULT):
         self.IndividualClass = IndividualClass
         self.fitnessCalc = fitnessCalc
         self.individuals = [self.IndividualClass() for i in range(popSize)]

@@ -35,16 +35,18 @@ class Individual(object):
         if isinstance(geneValues, list):
             self.genes = [GeneClass("Gene" + str(i), v) for (i, v) in zip(range(len(geneValues)), geneValues)]
         elif isinstance(geneValues, dict):
-            self.genes = [GeneClass(k, v) for (k, v) in geneValues.iteritems()]
+            self.genes = [GeneClass(k, v) for (k, v) in geneValues.items()]
         else:
             # geneValues is None, or some type we can't process
             self.genes = [GeneClass("Gene" + str(i)) for i in range(numGenes)]
 
-    def getGene(self, keyOrIndex):
-        return self.genes[keyOrIndex]
+    @property
+    def genes(self):
+        return self._genes
 
-    def setGene(self, keyOrIndex, gene):
-        self.genes[keyOrIndex] = gene
+    @genes.setter
+    def genes(self, newGenes):
+        self._genes = newGenes
 
     def numGenes(self):
         return len(self.genes)
@@ -54,10 +56,10 @@ class Individual(object):
             g.mutate()
 
     def toString(self):
-        return " ".join([str(g.getValue()) for g in self.genes])
+        return " ".join([str(g.value) for g in self.genes])
 
 class IndivNamedGenes(Individual):
-    """Individual member of the GA population"""
+    """Individual with specific named genes"""
 
     def __init__(self, numGenes = NUM_GENES_DEFAULT, geneValues = None, GeneClass = GENE_CLASS_DEFAULT):
         self.genes = []
@@ -66,22 +68,6 @@ class IndivNamedGenes(Individual):
         self.genes.append(GeneClass("Baz", valueOrNone(geneValues, 2), 1, 9))
         self.genes.append(GeneClass("Waz", valueOrNone(geneValues, 3), -44, -22))
         self.genes.append(GeneClass("Zzz", valueOrNone(geneValues, 4), 0, 1))
-
-    def getGene(self, keyOrIndex):
-        return self.genes[keyOrIndex]
-
-    def setGene(self, keyOrIndex, gene):
-        self.genes[keyOrIndex] = gene
-
-    def numGenes(self):
-        return len(self.genes)
-
-    def mutate(self):
-        for g in self.genes:
-            g.mutate()
-
-    def toString(self):
-        return " ".join([str(g.getValue()) for g in self.genes])
 
 def valueOrNone(var, index):
     try:
@@ -108,9 +94,9 @@ if __name__ == "__main__":
     Gene.Gene.mutationRate = 0.5
     i1.mutate()
     print("i1 All genes, after mutation:", i1.toString())
-    print("i1 One gene, initial value:", i1.getGene(1).getValue())
-    i1.setGene(1, Gene.Gene("", 55))
-    print("i1 One gene, new value:", i1.getGene(1).getValue())
+    print("i1 One gene, initial value:", i1.genes[1].value)
+    i1.genes[1] = Gene.Gene("", 55)
+    print("i1 One gene, new value:", i1.genes[1].value)
     values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     i2 = Individual(10, values)
     print("i2 All genes, initial values:", i2.toString(), "numGenes = ", i2.numGenes())
