@@ -61,6 +61,12 @@ class Gene(object):
         if random.random() <= Gene.mutationRate:
             self.value = self.__randomValue()
 
+    def __str__(self):
+        return "{0} = {1}".format(self.name, self.value)
+
+    def __repr__(self):
+        return self.__str__()
+
 if __name__ == "__main__":
     g1 = Gene("g1", 10)
     print("Gene initial value:", g1.value)

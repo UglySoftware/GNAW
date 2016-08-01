@@ -55,8 +55,12 @@ class Individual(object):
         for g in self.genes:
             g.mutate()
 
-    def toString(self):
+    def __str__(self):
+        #return " ".join(map(str, self.genes))
         return " ".join([str(g.value) for g in self.genes])
+
+    def __repr__(self):
+        return self.__str__()
 
 class IndivNamedGenes(Individual):
     """Individual with specific named genes"""
@@ -90,20 +94,20 @@ def breed(parent1, parent2):
 
 if __name__ == "__main__":
     i1 = Individual(10)
-    print("i1 All genes, initial values:", i1.toString())
+    print("i1 All genes, initial values:", i1)
     Gene.Gene.mutationRate = 0.5
     i1.mutate()
-    print("i1 All genes, after mutation:", i1.toString())
+    print("i1 All genes, after mutation:", i1)
     print("i1 One gene, initial value:", i1.genes[1].value)
     i1.genes[1] = Gene.Gene("", 55)
     print("i1 One gene, new value:", i1.genes[1].value)
     values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     i2 = Individual(10, values)
-    print("i2 All genes, initial values:", i2.toString(), "numGenes = ", i2.numGenes())
+    print("i2 All genes, initial values:", i2, "numGenes = ", i2.numGenes())
     i3 = breed(i1, i2)
-    print("i3 All genes, initial values:", i3.toString())
-    i4 = Individual()
-    print("i4, all defaults, initial values:", i4.toString())
+    print("i3 All genes, initial values:", i3)
+    i4 = IndivNamedGenes()
+    print("i4, all defaults, initial values:", i4)
     i5 = Individual(3, { "moo" : 3, "boo" : 5, "zoo" : 7 } )
-    print("i5, from dictionary, initial values:", i5.toString())
+    print("i5, from dictionary, initial values:", i5)
     print(i5.genes[1].name)
