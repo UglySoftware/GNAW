@@ -27,7 +27,7 @@ class FCGoesTo11(FitnessCalcBase.FitnessCalcBase):
     # in this case the "goal" parameter is not used
     def getFitness(self, indiv, goal = None):
         try:
-            geneValueAvg = sum([g.value for g in indiv.genes]) / (indiv.numGenes() + 0.0)
+            geneValueAvg = sum([g.value for g in indiv.genes]) / (indiv.numGenes + 0.0)
             fitnessDelta = math.fabs((geneValueAvg - 11.0) / 137.0)
             return 1.0 - fitnessDelta
         except Exception as e:

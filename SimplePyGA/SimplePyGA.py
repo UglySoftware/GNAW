@@ -34,7 +34,7 @@ def printPopulation(pop, generation, goal):
     print("========================================")
 
 def printFittest(generation, fittestIndividual, fittestScore):
-    print("Generation", generation, "Fittest Individual:", fittestIndividual.toString(), "Score:", fittestScore)
+    print("Generation", generation, "Fittest Individual:", fittestIndividual, "Score:", fittestScore)
 
 # main program
 if __name__ == "__main__":

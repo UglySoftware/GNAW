@@ -28,7 +28,7 @@ class FCAvgPctDiff(FitnessCalcBase.FitnessCalcBase):
     def getFitness(self, indiv, goal):
         try:
             fitnessDelta = [i.pctDiff(g) for (i, g) in zip(indiv.genes, goal.genes)]
-            return 1.0 - (sum(fitnessDelta) / indiv.numGenes())
+            return 1.0 - (sum(fitnessDelta) / indiv.numGenes)
         except Exception as e:
             print("FCAvgPctDiff.getFitness() EXCEPTION:", e);
             return 0.0

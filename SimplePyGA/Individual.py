@@ -48,6 +48,7 @@ class Individual(object):
     def genes(self, newGenes):
         self._genes = newGenes
 
+    @property
     def numGenes(self):
         return len(self.genes)
 
@@ -103,7 +104,7 @@ if __name__ == "__main__":
     print("i1 One gene, new value:", i1.genes[1].value)
     values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     i2 = Individual(10, values)
-    print("i2 All genes, initial values:", i2, "numGenes = ", i2.numGenes())
+    print("i2 All genes, initial values:", i2, "numGenes = ", i2.numGenes)
     i3 = breed(i1, i2)
     print("i3 All genes, initial values:", i3)
     i4 = IndivNamedGenes()

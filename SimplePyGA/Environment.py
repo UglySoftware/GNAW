@@ -23,14 +23,14 @@
 import Gene
 import Individual
 import Population
-from FitnessCalc import FitnessCalc, FitnessCalcBase, FCAvgPctDiff, FCGoesTo11, FCInverseDiff
+from FitnessCalc import FitnessCalc, FitnessCalcBase, FCAvgPctDiff, FCGoesTo11, FCInverseDiff, FCNumPyExample
 
 # GA control settings
 promptBetweenGenerations = False
 printAllIndividuals = False
 printFittestIndividual = True
-maxGenerations = 100
-#maxGenerations = -1
+#maxGenerations = 100
+maxGenerations = -1
 
 # Gene settings
 GeneClass = Gene.Gene
@@ -53,4 +53,5 @@ populationSize = 20
 #FitnessCalcClass = FitnessCalcBase.FitnessCalcBase
 #FitnessCalcClass = FCInverseDiff.FCInverseDiff
 #FitnessCalcClass = FCAvgPctDiff.FCAvgPctDiff
-FitnessCalcClass = FCGoesTo11.FCGoesTo11
+#FitnessCalcClass = FCGoesTo11.FCGoesTo11
+FitnessCalcClass = FCNumPyExample.FCNumPyExample

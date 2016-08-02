@@ -27,6 +27,7 @@
     </Compile>
     <Compile Include="FitnessCalc\FCAvgPctDiff.py" />
     <Compile Include="FitnessCalc\FCGoesTo11.py" />
+    <Compile Include="FitnessCalc\FCNumPyExample.py" />
     <Compile Include="FitnessCalc\FCInverseDiff.py" />
     <Compile Include="FitnessCalc\FitnessCalc.py" />
     <Compile Include="FitnessCalc\FitnessCalcBase.py" />
