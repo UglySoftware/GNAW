@@ -28,6 +28,7 @@
     <Compile Include="FitnessCalc\FCAvgPctDiff.py" />
     <Compile Include="FitnessCalc\FCGoesTo11.py" />
     <Compile Include="FitnessCalc\FCNumPyExample.py" />
+    <Compile Include="FitnessCalc\FCNumPyExample2.py" />
     <Compile Include="FitnessCalc\FCInverseDiff.py" />
     <Compile Include="FitnessCalc\FitnessCalc.py" />
     <Compile Include="FitnessCalc\FitnessCalcBase.py" />
@@ -43,9 +44,6 @@
     </Compile>
     <Compile Include="SimplePyGA.py" />
     <Compile Include="__init__.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FitnessCalc\" />
