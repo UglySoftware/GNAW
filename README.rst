@@ -31,9 +31,8 @@ For a given GA application:
 
 -  Individuals represent something you want to improve, such as a design
    or algorithm
--  Individuals have a set of characteristics, usually referred to as
-   their chromosomes or genes and usually represented by numeric
-   parameters or lists of values
+-  Individuals have a set of characteristics, usually referred to as their
+chromosomes or genes and usually represented by numeric parameters or lists of values
 -  Individuals may mutate, in which case one or more genes may randomly
    change on its own
 -  Individuals may cross-breed, in which case one or more new
