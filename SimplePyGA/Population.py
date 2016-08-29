@@ -42,6 +42,7 @@ class Population(object):
         self.fitnessCalc = fitnessCalc
         self.individuals = [self.IndividualClass() for i in range(popSize)]
 
+    @property
     def size(self):
         return len(self.individuals)
 
@@ -50,14 +51,15 @@ class Population(object):
             i.mutate()
 
     def selectForBreeding(self):
-        selectedIndices = [random.randrange(0, self.size() - 1) for i in range(self.breedingPoolSize)]
+        selectedIndices = [random.randrange(0, self.size - 1) for i in range(self.breedingPoolSize)]
         return [self.individuals[i] for i in selectedIndices]
 
     def evolve(self, goal):
-        for i in range(self.size()):
+        for child in self.individuals:
             parent1 = FC.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
             parent2 = FC.getFittest(self.selectForBreeding(), goal, self.fitnessCalc)
-            self.individuals[i] = Individual.breed(parent1, parent2)
+            if (parent1 is not parent2):
+                Individual.breed2(parent1, parent2, child)
         self.mutate()
 
     def printPop(self, goal):

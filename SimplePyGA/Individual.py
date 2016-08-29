@@ -93,6 +93,15 @@ def breed(parent1, parent2):
             cg = copy.deepcopy(pg2)
     return child
 
+def breed2(parent1, parent2, child):
+    for (pg1, pg2, cg) in zip(parent1.genes, parent2.genes, child.genes):
+        if random.random() <= child.crossoverRate:
+            #cg = copy.copy(pg1)
+            cg.value = pg1.value
+        else:
+            #cg = copy.copy(pg2)
+            cg.value = pg2.value
+
 if __name__ == "__main__":
     i1 = Individual(10)
     print("i1 All genes, initial values:", i1)

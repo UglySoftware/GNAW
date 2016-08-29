@@ -17,7 +17,7 @@
 #-----------------------------------------------------------------------
 
 # Python library imports
-#none
+import time
 
 # SimplePyGA imports
 import Environment
@@ -38,16 +38,18 @@ def printFittest(generation, fittestIndividual, fittestScore):
 
 # main program
 if __name__ == "__main__":
+    tic = time.clock()
     goal = Environment.IndividualClass(Environment.numGenesPerIndividual, Environment.goalIndividualGenes);
     fitnessCalc = Environment.FitnessCalcClass()
     pop = Environment.PopulationClass(Environment.populationSize, Environment.IndividualClass, fitnessCalc)
     generation = 0;
     while True:
-        if Environment.printAllIndividuals:
+        printThisGen = (Environment.printModuloGeneration == 0) or ((generation % Environment.printModuloGeneration) == 0)
+        if printThisGen and Environment.printAllIndividuals:
             printPopulation(pop, generation, goal)
         fittestIndividual = FitnessCalc.FitnessCalc.getFittest(pop.individuals, goal, fitnessCalc)
         fittestScore = fitnessCalc.getFitness(fittestIndividual, goal)
-        if Environment.printFittestIndividual:
+        if printThisGen and Environment.printFittestIndividual:
             printFittest(generation, fittestIndividual, fittestScore)
         if (fittestScore != 1.0) and ((Environment.maxGenerations < 0) or (Environment.maxGenerations > generation)):
             if Environment.promptBetweenGenerations:
@@ -56,6 +58,8 @@ if __name__ == "__main__":
             generation = generation + 1
         else:
             break
+    toc = time.clock()
     print("DONE!")
     print("Number of generations:", generation)
     printFittest(generation, fittestIndividual, fittestScore)
+    print("Total runtime:", toc - tic)

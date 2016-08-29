@@ -58,7 +58,7 @@ class Gene(object):
         return self.absDiff(other) / (self.maxValue - self.minValue + 1)
 
     def mutate(self):
-        if random.random() <= Gene.mutationRate:
+        if random.random() <= self.mutationRate:
             self.value = self.__randomValue()
 
     def __str__(self):

@@ -29,8 +29,9 @@ from FitnessCalc import FitnessCalc, FitnessCalcBase, FCAvgPctDiff, FCGoesTo11, 
 promptBetweenGenerations = False
 printAllIndividuals = False
 printFittestIndividual = True
-#maxGenerations = 100
-maxGenerations = -1
+printModuloGeneration = 10
+maxGenerations = 100
+#maxGenerations = -1
 
 # Gene settings
 GeneClass = Gene.Gene
@@ -52,6 +53,6 @@ populationSize = 20
 # FitnessCalc settings
 #FitnessCalcClass = FitnessCalcBase.FitnessCalcBase
 #FitnessCalcClass = FCInverseDiff.FCInverseDiff
-#FitnessCalcClass = FCAvgPctDiff.FCAvgPctDiff
+FitnessCalcClass = FCAvgPctDiff.FCAvgPctDiff
 #FitnessCalcClass = FCGoesTo11.FCGoesTo11
-FitnessCalcClass = FCNumPyExample.FCNumPyExample
+#FitnessCalcClass = FCNumPyExample.FCNumPyExample

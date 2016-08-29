@@ -22,17 +22,19 @@ import numpy as np
 # SimplePyGA imports
 from . import FitnessCalcBase
 
-class FCNumPyExample(FitnessCalcBase.FitnessCalcBase):
+class FCNumPyExample2(FitnessCalcBase.FitnessCalcBase):
 
-    # Very simple NumPy example
+    # Another simple NumPy example
     # Load indiv genes and goal into NumPy arrays
-    # Takes dot product; zero = perfect fitness
-    # (of course this means an all-zero vector is always "perfect" no matter what the goal set
+    # Computes vector magnitude (sqrt(vec elements squared))
+    # Closer to goal magnitude = higher fitness
     def getFitness(self, indiv, goal):
         try:
             i = np.array([_.value for _ in indiv.genes])
+            iMag = math.sqrt(np.sum(i * i))
             g = np.array([_.value for _ in goal.genes])
-            dp = math.fabs(i.dot(g))
+            gMag = math.sqrt(np.sum(g * g))
+            dp = math.fabs(iMag - gMag)
             fitness = 1.0 / (dp + 1.0)
         except Exception as e:
             print("FCNumPyExample.getFitness() EXCEPTION:", e);
